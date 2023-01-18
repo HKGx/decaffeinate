@@ -19,7 +19,8 @@ function formatAstNodeLines(node: Node, context: CodeContext): Array<string> {
     'start',
     'end',
   ]);
-  for (const key of Object.keys(node)) {
+  const keys = Object.keys(node) as Array<keyof typeof node>;
+  for (const key of keys) {
     if (blacklistedProps.indexOf(key) !== -1) {
       continue;
     }

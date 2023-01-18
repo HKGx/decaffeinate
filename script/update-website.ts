@@ -76,7 +76,7 @@ async function updateWebsite(): Promise<void> {
   await run('git', ['reset', '--hard', 'website-main']);
 
   const websitePackage = await pkg();
-  const currentVersion = websitePackage['devDependencies']['decaffeinate'] as string;
+  const currentVersion = (websitePackage['devDependencies'] as Record<string, string>)['decaffeinate'];
 
   if (currentVersion === latestVersion) {
     console.log(`Already using decaffeinate v${latestVersion}, skipping install.`);

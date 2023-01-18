@@ -21,10 +21,12 @@ function isDeepEqual(actual: unknown, expected: unknown): boolean {
     return actual.length === expected.length && actual.every((val, i) => isDeepEqual(val, expected[i]));
   }
   if (typeof actual === 'object' && actual && typeof expected === 'object' && expected) {
-    return (
-      isDeepEqual(Object.keys(actual).sort(), Object.keys(expected).sort()) &&
-      Object.keys(actual).every((key) => isDeepEqual(actual[key], expected[key]))
-    );
+    const actualKeys = Object.keys(actual) as Array<keyof typeof actual>;
+    const expectedKeys = Object.keys(expected) as Array<keyof typeof expected>;
+    if (!isDeepEqual(actualKeys.sort(), expectedKeys.sort())) {
+      return false;
+    }
+    return actualKeys.every((key) => isDeepEqual(actual[key], expected[key]));
   }
   return false;
 }

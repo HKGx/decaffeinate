@@ -2,7 +2,8 @@
   "compilerOptions": {
     "strict": true,
     "target": "es2018",
-    "module": "commonjs",
+    "module": "ES2020",
+    "moduleResolution": "NodeNext",
     "declaration": true,
     "noEmit": true,
     "lib": ["es2015"],
@@ -13,7 +14,6 @@
     "noUnusedLocals": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "suppressImplicitAnyIndexErrors": true,
     "downlevelIteration": true,
     "noEmitHelpers": true,
     "importHelpers": true,
